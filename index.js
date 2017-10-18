@@ -5,6 +5,8 @@ var cors = require('cors');
 
 var app = express();
 app.use(cors());
+const morgan = require('morgan');
+app.use(morgan('dev'));
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -30,7 +32,7 @@ app.post('/files', function (req, res) {
     })
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, function(){
     console.log('Server listening on:', port)
 });
